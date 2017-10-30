@@ -1,6 +1,7 @@
 fileTypes: [
   "asn",
-  "asn1"
+  "asn1",
+  "mib"
 ]
 name: "Abstract Syntax Notation"
 patterns: [
@@ -9,7 +10,7 @@ patterns: [
     name: "comment.line.asn"
   },
   {
-    match: "(BIT|OCTET) STRING|OBJECT IDENTIFIER|SEQUENCE( OF)?|SET( OF)?|INTEGER|ANY DEFINED BY|IA5String",
+    match: "(BIT|OCTET) STRING|OBJECT IDENTIFIER|MODULE-IDENTITY|SEQUENCE( OF)?|SET( OF)?|INTEGER|ANY DEFINED BY|IA5String|DisplayString|Integer32|Unsigned32|IpAddress|TruthValue|MacAddress|NOTIFICATION-TYPE",
     name: "storage.type.asn"
   },
   {
@@ -19,6 +20,38 @@ patterns: [
   {
     match: "BEGIN|END|DEFINITIONS|TAGS",
     name: "keyword.language.asn"
+  },
+  {
+    match: "REVISION .*$",
+    name: "markup.bold.asn"
+  },
+  {
+    match: "DESCRIPTION\n((.|\n)*)$|\".*\"",
+    name: "markup.italic.asn"
+  },
+  {
+    match: "read-only|read-write",
+    name: "markup.underline.asn"
+  },
+  {
+    match: "current",
+    name: "markup.raw.asn"
+  },
+  {
+    match: "STATUS|SYNTAX|MAX-ACCESS|UNITS",
+    name: "support.constant.asn"
+  },
+  {
+    match: "^.* OBJECT-TYPE",
+    name: "support.variable.asn"
+  },
+  {
+    match: "^.* ::= TEXTUAL-CONVENTION",
+    name: "variable.language.asn"
+  },
+  {
+    match: "::= \{ .* \}",
+    name: "variable.parameter.asn"
   },
   {
     match: "(IM|EX)PLICIT",
